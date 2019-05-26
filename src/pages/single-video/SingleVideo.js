@@ -35,6 +35,9 @@ export default class SingleVideo extends Component {
     }
 
     render() {
+        const coverArt = {
+            backgroundImage: 'url(' + this.state.video.kind + ')',
+        };
         return (
             <div>
                 <Link to="/">
@@ -42,7 +45,7 @@ export default class SingleVideo extends Component {
                 </Link>
                 <div id="bg"></div>
                 <main>
-                    <div id="albumCover"></div>
+                    <div id="albumCover" style={coverArt}></div>
                     <div id="progress">
                         <div id="progress-bar"></div>
                     </div>
