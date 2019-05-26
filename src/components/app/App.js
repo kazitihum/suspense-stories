@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Home from '../../pages/home/Home';
@@ -11,8 +11,10 @@ function App() {
     return (
         <Router>
             <CssBaseline />
-            <Route exact path="/" component={Home} />
-            <Route exact path="/single" component={SingleVideo} />
+            <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/single/:id" component={SingleVideo} />
+            </Switch>
             <BottomFixedNavigation />
         </Router>
     );
