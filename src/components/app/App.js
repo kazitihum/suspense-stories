@@ -1,12 +1,19 @@
 import React from 'react';
-import Home from '../../pages/home/home'
-import logo from '../../logo.svg';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import Home from '../../pages/home/Home';
+import SingleVideo from '../../pages/single-video/SingleVideo';
 import './App.css';
 
 function App() {
-  return (
-    <Home />
-  );
+    return (
+        <Router>
+            <CssBaseline />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/single" component={SingleVideo} />
+        </Router>
+    );
 }
 
 export default App;

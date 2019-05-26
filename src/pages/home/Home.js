@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 import PlayList from '../../apis/PlayList';
 
 export default class Home extends Component {
