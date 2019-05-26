@@ -1,0 +1,156 @@
+/* Color Of The Year -- https://colorganize.com/?palette=75 */
+#bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url(http://gagadaily.com/uploads/stories/monthly_2016_09/joanne.jpg.a6d8d6fd6e671a82ae75e80925ff43d3.jpg) center/cover no-repeat;
+  filter: blur(30px);
+  animation: blurAni 5s infinite;
+}
+
+#bg::before {
+  background: #333;
+  content: '';
+  display: block;
+  height: 100%;
+  opacity: 0.3;
+  position: absolute;
+  width: 100%;
+}
+#bg::after {
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  background: rgba(0, 0, 0, 0);
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 50%, #323232 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, #323232 100%);
+}
+
+@keyframes blurAni {
+  0% {
+    filter: blur(5px);
+  }
+  25% {
+    filter: blur(10px);
+  }
+  50% {
+    filter: blur(15px);
+  }
+  75% {
+    filter: blur(10px);
+  }
+  100% {
+    filter: blur(5px);
+  }
+}
+
+main {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 3.5rem;
+  padding: 0 calc(50% - 10rem);
+  text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#albumCover {
+  width: 100%;
+  height: 20rem;
+  background-image: url(http://gagadaily.com/uploads/stories/monthly_2016_09/joanne.jpg.a6d8d6fd6e671a82ae75e80925ff43d3.jpg);
+  background-size: cover;
+  display: inline-block;
+  box-shadow: 0 3rem 4rem -1rem rgba(0, 0, 0, 0.5);
+}
+
+#progress {
+  width: 100%;
+  background-color: rgba(255,255,255, 0.3);
+}
+
+#progress-bar {
+  width: 0%;
+  height: .4rem;
+  background-color: #F7CAC9;
+}
+
+#title {
+  margin: 1rem 0;
+  width: 100%;
+  overflow: hidden;
+  height: 1.1rem;
+  color: white;
+}
+
+#title-text {
+  animation: scrolling-text 16s linear infinite;
+}
+
+@keyframes scrolling-text {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+#controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control {
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.5);
+  cursor: pointer;
+  margin: 0 10px;
+  color: #fff;
+  transition: transform .3s, box-shadow .5s, text-shadow .5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.control:hover, .control:focus {
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+.control:active {
+  transform: scale(0.9);
+  box-shadow: none;
+  text-shadow: none;
+}
+.control .icon {
+  font-size: 2.7rem;
+}
+
+#controls-play {
+  width: 4rem;
+  height: 4rem;
+  font-size: 4rem;
+}
+#controls-play .icon {
+  font-size: 4rem;
+}
+#controls-play .icon-pause {
+  display: none;
+}
+#controls-play.play .icon-pause {
+  display: block;
+}
+#controls-play.play .icon-play {
+  display: none;
+}
