@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 
-import Search from '@material-ui/icons/Search';
 import HomeOutlined from '@material-ui/icons/HomeOutlined';
 import CategoryOutlined from '@material-ui/icons/CategoryOutlined';
 import SettingsOutlined from '@material-ui/icons/SettingsOutlined';
@@ -30,7 +29,6 @@ function BottomFixedNavigation() {
     return (
         <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
             <BottomNavigationAction label="Home" value="home" icon={<HomeOutlined />} />
-            <BottomNavigationAction label="Search" value="search" icon={<Search />} />
             <BottomNavigationAction label="Category" value="category" icon={<CategoryOutlined />} />
             <BottomNavigationAction label="Settings" value="settings" icon={<SettingsOutlined />} />
         </BottomNavigation>

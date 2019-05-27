@@ -13,6 +13,7 @@ import Loop from '@material-ui/icons/Loop';
 import Box from '@material-ui/core/Box';
 
 import GetVideo from '../../apis/GetVideo';
+import Duration from '../../components/player/Duration'
 import './singlevideo.css';
 
 export default class SingleVideo extends Component {
@@ -118,7 +119,7 @@ export default class SingleVideo extends Component {
 
 
     render() {
-        const { url, playing, controls, light, volume, muted, loop, played, loaded, duration, playbackRate, pip } = this.state;
+        const { url, playing, controls, light, volume, muted, loop, played, duration, playbackRate, pip } = this.state;
         return (
             <div>
                 <Box width="0%">
@@ -157,8 +158,13 @@ export default class SingleVideo extends Component {
                         </Link>
                         <div id="bg" style={{ backgroundImage: 'url(' + item.snippet.thumbnails.high.url + ')' }}></div>
                         <main>
-                            <Box id="albumCover" style={{ backgroundImage: 'url(' + item.snippet.thumbnails.high.url + ')' }}></Box>
-                            <Box id="progress">
+                            <Box className="coverContainer" width="100%">
+                                <Box id="albumCover" borderRadius="10px" style={{ backgroundImage: 'url(' + item.snippet.thumbnails.high.url + ')' }}></Box>
+                            </Box>
+                            <Box id="title">
+                                <Box id="title-text">{item.snippet.title}</Box>
+                            </Box>
+                            <Box id="progress" width="100%">
                                 <input
                                     type='range' min={0} max={1} step='any'
                                     value={played}
@@ -166,11 +172,19 @@ export default class SingleVideo extends Component {
                                     onChange={this.onSeekChange}
                                     onMouseUp={this.onSeekMouseUp}
                                 />
-                            </Box>
-                            <Box id="title">
-                                <Box id="title-text">{item.snippet.title}</Box>
+                                <Box display="flex" justifyContent="space-between" px="10px" color="white">
+                                    <p><Duration seconds={duration * played} /></p>
+                                    <p><Duration seconds={duration} /></p>
+                                </Box>
                             </Box>
                             <Box id="controls">
+                                <Box className="control" onClick={this.toggleMuted}>
+                                    {muted ? (
+                                        <VolumeOff />
+                                    ) : (
+                                            <VolumeMute />
+                                        )}
+                                </Box>
                                 <Box className="control"><SkipPreviousOutlined fontSize="large" /></Box>
                                 <Box className="control" id="controls-play" onClick={this.playPause}>
                                     {playing ? (
@@ -180,16 +194,9 @@ export default class SingleVideo extends Component {
                                         )}
                                 </Box>
                                 <Box className="control"><SkipNextOutlined fontSize="large" /></Box>
+                                <Box className="control" onClick={this.toggleLoop}><Loop /></Box>
                             </Box>
-                            <Box className="controls" mt={3}>
-                                <Box className="control">
-                                    {muted ? (
-                                        <VolumeOff onClick={this.toggleMuted} />
-                                    ) : (
-                                            <VolumeMute onClick={this.toggleMuted} />
-                                        )}
-                                </Box>
-                                <Box className="control"><Loop onClick={this.toggleLoop} /></Box>
+                            <Box className="controls" mt={1}>
                             </Box>
                         </main>
                     </Box>
