@@ -114,17 +114,16 @@ main {
   }
 }
 
-#controls {
+#controls, .controls {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .control {
-  width: 2.7rem;
-  height: 2.7rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
-  border: 1px solid rgba(255,255,255,.5);
   cursor: pointer;
   margin: 0 10px;
   color: #fff;
@@ -149,8 +148,7 @@ main {
 }
 
 #controls-play {
-  width: 4rem;
-  height: 4rem;
+padding: 3rem;
   font-size: 4rem;
 }
 #controls-play .icon {
