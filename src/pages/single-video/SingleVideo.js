@@ -152,7 +152,7 @@ export default class SingleVideo extends Component {
                     />
                 </Box>
                 {this.state.video.map(item =>
-                    <Box>
+                    <Box key={item.id}>
                         <Link to="/">
                             <ArrowBack className="backBtn" />
                         </Link>

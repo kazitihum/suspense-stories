@@ -16,6 +16,7 @@ export default class Home extends Component {
             videos: [],
             search: ''
         };
+        this.updateSearch = this.updateSearch.bind(this);
     }
 
     componentDidMount() {
@@ -32,8 +33,8 @@ export default class Home extends Component {
             });
     }
 
-    updateSearch(searchValue) {
-        this.setState({search: searchValue.target.value.substr(0, 20)});
+    updateSearch(event) {
+        this.setState({search: event.substr(0, 20)});
     }
 
     render() {
@@ -48,9 +49,6 @@ export default class Home extends Component {
                     <TopBar onUpdateSearch={this.updateSearch} />
                 </Box>
                 <Box py="16px">
-                    <input type="text"
-                        value={this.state.search}
-                        onChange={this.updateSearch.bind(this)} />
                     <Grid container cols={2} spacing={2}>
                         {filteredVideos.map(item =>
                             <Grid item xs={6} key={item.id} >

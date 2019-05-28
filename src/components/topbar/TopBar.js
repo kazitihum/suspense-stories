@@ -22,13 +22,15 @@ const useStyles = makeStyles({
     }
 });
 
-const handleSearchInput = (event) => {
-    var searchValue = event.target.value;
-    this.props.onUpdateSearch(searchValue);
-}
+export default function TopBar(props) {
 
-export default function TopBar() {
+    const handleSearchInput = (event) => {
+        event.preventDefault();
+        props.onUpdateSearch(event.target.value);
+    }
+
     const classes = useStyles();
+
     return (
         <Paper className={classes.root}>
             <InputBase className={classes.input} placeholder="Search" onChange={handleSearchInput} />
