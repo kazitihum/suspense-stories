@@ -12,9 +12,11 @@ const useStyles = makeStyles({
         position: 'fixed',
         bottom: '0',
         width: '100%',
+        boxShadow: '0 0 30px rgba(0,0,0,.15)',
         '& .MuiBottomNavigationAction-label': {
             'font-size': '0.675rem',
         }
+
     },
 });
 

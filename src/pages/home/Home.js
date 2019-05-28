@@ -34,7 +34,7 @@ export default class Home extends Component {
     }
 
     updateSearch(event) {
-        this.setState({search: event.substr(0, 20)});
+        this.setState({ search: event.substr(0, 20) });
     }
 
     render() {
