@@ -7,7 +7,7 @@ import SingleVideo from '../../pages/single-video/SingleVideo';
 import BottomFixedNavigation from '../bottom-navigation/BottomNavigation'
 import './App.css';
 
-function App() {
+function App() {    
     return (
         <Router>
             <CssBaseline />
