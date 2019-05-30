@@ -4,29 +4,29 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 
-import PlayList from '../../apis/PlayList';
-import TopBar from '../../components/topbar/TopBar';
-import VideoListItem from '../../components/video-list-item/VideoListItem';
-import './home.css';
+import PlayList from '../../apis/YouTube/PlayList';
+import TopBar from '../../components/TopBar/TopBar';
+import AudioListItem from '../../components/AudioListItem/AudioListItem';
+import './Home.css';
 
 export default class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            videos: [],
+            audios: [],
             search: ''
         };
         this.updateSearch = this.updateSearch.bind(this);
     }
 
     componentDidMount() {
-        this.VideoList();
+        this.AudioList();
     }
 
-    VideoList() {
+    AudioList() {
         PlayList.get('/playlistItems')
             .then(response => {
-                this.setState({ videos: response.data.items });
+                this.setState({ audios: response.data.items });
             })
             .catch(function(error) {
                 console.log(error);
@@ -38,9 +38,9 @@ export default class Home extends Component {
     }
 
     render() {
-        let filteredVideos = this.state.videos.filter(
-            (video) => {
-                return video.snippet.title.toLowerCase().indexOf(this.state.search) !== -1;
+        let filteredAudios = this.state.audios.filter(
+            (audio) => {
+                return audio.snippet.title.toLowerCase().indexOf(this.state.search) !== -1;
             }
         );
         return (
@@ -50,9 +50,9 @@ export default class Home extends Component {
                 </Box>
                 <Box py="16px">
                     <Grid container cols={2} spacing={2}>
-                        {filteredVideos.map(item =>
+                        {filteredAudios.map(item =>
                             <Grid item xs={6} key={item.id} >
-                                <VideoListItem videoDetails={item.snippet} />
+                                <AudioListItem audioDetails={item.snippet} />
                             </Grid>
                         )}
                     </Grid>

@@ -12,16 +12,16 @@ import VolumeOff from '@material-ui/icons/VolumeOff';
 import Loop from '@material-ui/icons/Loop';
 import Box from '@material-ui/core/Box';
 
-import GetVideo from '../../apis/GetVideo';
-import Duration from '../../components/player/Duration'
-import './singlevideo.css';
+import GetAudio from '../../apis/YouTube/GetAudio';
+import Duration from '../../components/Player/Duration'
+import './SingleAudio.css';
 
-export default class SingleVideo extends Component {
+export default class SingleAudioPage extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            video: [],
+            audios: [],
             urlId: props.match.params.id,
             url: 'https://www.youtube.com/watch?v=' + props.match.params.id,
             pip: false,
@@ -104,13 +104,13 @@ export default class SingleVideo extends Component {
     }
 
     componentDidMount() {
-        this.FatchedVideo();
+        this.FatchedAudio();
     }
 
-    FatchedVideo() {
-        GetVideo.get('/videos?id=' + this.state.urlId)
+    FatchedAudio() {
+        GetAudio.get('/videos?id=' + this.state.urlId)
             .then(response => {
-                this.setState({ video: response.data.items });
+                this.setState({ audios: response.data.items });
             })
             .catch(function(error) {
                 console.log(error);
@@ -151,7 +151,7 @@ export default class SingleVideo extends Component {
                         onDuration={this.onDuration}
                     />
                 </Box>
-                {this.state.video.map(item =>
+                {this.state.audios.map(item =>
                     <Box key={item.id}>
                         <Link to="/">
                             <ArrowBack className="backBtn" />
